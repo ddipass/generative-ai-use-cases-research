@@ -5,10 +5,23 @@ packages/cdk/lib/construct/recognize-file.ts
 
       ephemeralStorageGiB: 100,
 
+Dockerfile
+
+RUN df -hi
+
 
 # 修正History中日文摘要的问题
 
 
+
+# 修正Login中日文的问题
+
+packages/web/src/components/AuthWithSAML.tsx
+
+packages/web/src/components/AuthWithUserpool.tsx
+
+
+# 在Login中添加Terms & Conditions的问题
 
 
 

@@ -13,10 +13,10 @@ WORKDIR /backend
 
 COPY requirements.txt .
 
+RUN df -hi
+
 RUN set -e \
     && pip3 install -r requirements.txt --no-cache-dir
-
-RUN df -hi
 
 COPY ./app ./app
 
