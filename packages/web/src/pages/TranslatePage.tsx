@@ -12,7 +12,7 @@ import useChat from '../hooks/useChat';
 import useMicrophone from '../hooks/useMicrophone';
 import useTyping from '../hooks/useTyping';
 import useLocalStorageBoolean from '../hooks/useLocalStorageBoolean';
-import { PiMicrophoneBold, PiStopCircleBold } from 'react-icons/pi';
+import { PiMicrophone, PiMicrophoneSlash } from 'react-icons/pi';
 import { create } from 'zustand';
 import debounce from 'lodash.debounce';
 import { TranslatePageQueryParams } from '../@types/navigate';
