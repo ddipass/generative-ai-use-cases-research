@@ -286,6 +286,7 @@ const TranslatePage: React.FC = () => {
               <Switch label="Auto-translate" checked={auto} onSwitch={setAuto} />
             </div>
           </div>
+          
           <div className="flex w-full flex-col lg:flex-row">
             <div className="w-full">
               <div className="flex items-center py-2.5">
@@ -303,15 +304,21 @@ const TranslatePage: React.FC = () => {
                     </Button>
                   )}
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex w-full flex-col lg:flex-row">
+            <div className="w-full lg:ml-2">
                 <Textarea
                   placeholder="Please Enter"
                   value={sentence}
                   onChange={setSentence}
                   maxHeight={-1}
                 />
-              </div>
             </div>
           </div>
+
           <div className="flex w-full flex-col lg:flex-row">
             <div className="w-full lg:ml-2">
               <Select
@@ -334,15 +341,18 @@ const TranslatePage: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="w-full lg:ml-2">
+
+          <div className="flex w-full flex-col lg:flex-row">
+            <div className="w-full lg:ml-2">
+              <ExpandableField label="Additional Context" optional>
+                <Textarea
+                  placeholder="You can enter additional points you want to be considered (e.g., casualness)"
+                  value={additionalContext}
+                  onChange={setAdditionalContext}
+                />
+              </ExpandableField>
+            </div>
           </div>
-          <ExpandableField label="Additional Context" optional>
-            <Textarea
-              placeholder="You can enter additional points you want to be considered (e.g., casualness)"
-              value={additionalContext}
-              onChange={setAdditionalContext}
-            />
-          </ExpandableField>
 
           <div className="flex justify-end gap-3">
             <Button outlined onClick={onClickClear} disabled={disabledExec}>
