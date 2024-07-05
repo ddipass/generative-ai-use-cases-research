@@ -79,6 +79,7 @@ export class RecognizeFile extends Construct {
         cpuArchitecture: CpuArchitecture.X86_64,
         operatingSystemFamily: OperatingSystemFamily.LINUX,
       },
+      ephemeralStorageGiB: 100,
     });
 
     taskDefinition.addToTaskRolePolicy(

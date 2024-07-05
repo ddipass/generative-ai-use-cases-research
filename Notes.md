@@ -1,7 +1,9 @@
 
-# 去掉Browser Extension部分
+# 去掉recognize-file的docker容器过小的问题
 
+packages/cdk/lib/construct/recognize-file.ts 
 
+      ephemeralStorageGiB: 100,
 
 # 系统关键字修改
 
