@@ -48,7 +48,7 @@
     "hostedZoneId": null,
     "dashboard": true,
     "anonymousUsageTracking": true,
-    "recognizeFileEnabled": true,
+    "recognizeFileEnabled": false,
     "vpcId": null,
     "crossAccountBedrockRoleArn": "",
     "@aws-cdk/aws-lambda:recognizeLayerVersion": true,
