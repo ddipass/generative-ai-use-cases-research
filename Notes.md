@@ -5,6 +5,13 @@ packages/cdk/lib/construct/recognize-file.ts
 
       ephemeralStorageGiB: 100,
 
+
+# 修正History中日文摘要的问题
+
+
+
+
+
 # 系统关键字修改
 
 generative-ai-use-cases-jp

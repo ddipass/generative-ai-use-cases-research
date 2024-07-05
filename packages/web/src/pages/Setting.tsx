@@ -70,7 +70,7 @@ const Setting = () => {
         <SettingItem
           name="Version"
           value={localVersion || 'Could not be retrieved'}
-          helpMessage="Refers to the version in package.json of generative-ai-use-cases-jp"
+          helpMessage="Refers to the version in package.json of generative-ai-use-cases-research"
         />
         <SettingItem
           name="RAG (Amazon Kendra) Enabled"
@@ -145,7 +145,7 @@ const Setting = () => {
 
         <div className="mt-1 flex w-2/3 justify-end text-xs lg:w-1/2">
           <a
-            href="https://github.com/aws-samples/generative-ai-use-cases-jp/pulls?q=is%3Apr+is%3Aclosed"
+            href="https://github.com/ddipass/generative-ai-use-cases-research/pulls?q=is%3Apr+is%3Aclosed"
             className="flex items-center hover:underline"
             target="_blank">
             <PiArrowSquareOut className="mr-1 text-base" />
