@@ -312,6 +312,8 @@ const TranslatePage: React.FC = () => {
                 maxHeight={-1}
               />
             </div>
+          </div>
+          <div className="flex w-full flex-col lg:flex-row">
             <div className="w-full lg:ml-2">
               <Select
                 value={language}
@@ -333,7 +335,6 @@ const TranslatePage: React.FC = () => {
               </div>
             </div>
           </div>
-
           <ExpandableField label="Additional Context" optional>
             <Textarea
               placeholder="You can enter additional points you want to be considered (e.g., casualness)"
