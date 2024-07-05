@@ -303,14 +303,13 @@ const TranslatePage: React.FC = () => {
                     </Button>
                   )}
                 </div>
+                <Textarea
+                  placeholder="Please Enter"
+                  value={sentence}
+                  onChange={setSentence}
+                  maxHeight={-1}
+                />
               </div>
-
-              <Textarea
-                placeholder="Please Enter"
-                value={sentence}
-                onChange={setSentence}
-                maxHeight={-1}
-              />
             </div>
           </div>
           <div className="flex w-full flex-col lg:flex-row">
@@ -334,6 +333,8 @@ const TranslatePage: React.FC = () => {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="w-full lg:ml-2">
           </div>
           <ExpandableField label="Additional Context" optional>
             <Textarea
