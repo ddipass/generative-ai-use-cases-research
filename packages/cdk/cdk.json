@@ -35,17 +35,11 @@
       "stability.stable-diffusion-xl-v1"
     ],
     "endpointNames": [],
-    "agentEnabled": true,
-    "agentRegion": "us-east-1",
     "searchAgentEnabled": true,
     "searchApiKey": "BSAxmo32I7t0v_VjW-syEFxYimOQys0",
-    "agents": [
-	  {
-            "displayName": "SearchEngine",
-            "agentId": "XXXXXXXXX",
-            "aliasId": "YYYYYYYY"
-          }
-    ],
+    "agentEnabled": false,
+    "agentRegion": "us-east-1",
+    "agents": [],
     "allowedIpV4AddressRanges": null,
     "allowedIpV6AddressRanges": null,
     "allowedCountryCodes": null,
