@@ -21,6 +21,8 @@ import InputChatContent from '../components/InputChatContent';
 import Card from '../components/Card';
 import Select from '../components/Select';
 import queryString from 'query-string';
+// ffmpeg
+import { createFFmpeg, fetchFile } from '@ffmpeg/ffmpeg.js';
 
 type StateType = {
   content: string;
@@ -62,6 +64,10 @@ const VideoAnalyzerPage: React.FC = () => {
     []
   );
   const [deviceId, setDeviceId] = useState('');
+  // 添加这一行
+  const [showNetworkCamera, setShowNetworkCamera] = useState(false); 
+  // add webcam state
+  const [networkCameraUrl, setNetworkCameraUrl] = useState('');
   const [sending, setSending] = useState(false);
   const videoElement = useRef<HTMLVideoElement | null>(null);
   const callbackRef = useRef<() => void>();
@@ -86,6 +92,57 @@ const VideoAnalyzerPage: React.FC = () => {
   const prompter = useMemo(() => {
     return getPrompter(modelId);
   }, [modelId]);
+
+  // loader
+  const loadVideoFromNetworkCamera = async (url) => {
+    const ffmpeg = createFFmpeg({ log: true });
+    await ffmpeg.load();
+
+    const response = await fetch(url);
+    const reader = response.body.getReader();
+
+    const outputData = ffmpeg.FS('open', 'output.webm', 'w');
+
+    const transcodeVideo = async () => {
+      try {
+        const { value, done } = await reader.read();
+        if (done) {
+          ffmpeg.FS('close', outputData);
+          return;
+        }
+
+        ffmpeg.FS('write', outputData, value);
+
+        await ffmpeg.run('-i', 'pipe:0', '-f', 'matroska', '-c:v', 'libx264', '-r', '30', '-b:v', '1M', '-s', '640x480', '-an', '-f', 'webm', 'pipe:1');
+
+        const data = new Uint8Array(ffmpeg.FS('readFile', 'output.webm'));
+        const videoBlob = new Blob([data.buffer], { type: 'video/webm' });
+        const videoUrl = URL.createObjectURL(videoBlob);
+
+        const mediaSource = new MediaSource();
+        videoElement.current.src = URL.createObjectURL(mediaSource);
+        mediaSource.addEventListener('sourceopen', () => {
+          const sourceBuffer = mediaSource.addSourceBuffer('video/webm; codecs="vp8"');
+          sourceBuffer.appendBuffer(data);
+          sourceBuffer.addEventListener('updateend', () => {
+            mediaSource.endOfStream();
+            videoElement.current.srcObject = mediaSource;
+            videoElement.current.play();
+          });
+        });
+
+        return videoUrl;
+      } catch (error) {
+        console.error('Error transcoding video:', error);
+        ffmpeg.FS('close', outputData);
+        return null;
+      } finally {
+        await transcodeVideo();
+      }
+    };
+
+    return await transcodeVideo();
+  };
 
   useEffect(() => {
     const _modelId = !modelId ? availableMultiModalModels[0] : modelId;
@@ -204,23 +261,50 @@ const VideoAnalyzerPage: React.FC = () => {
       if (videoElement.current) {
         setRecording(true);
 
-        const stream = await navigator.mediaDevices.getUserMedia({
-          audio: false,
-          video: {
-            deviceId: {
-              exact: deviceId,
+        let stream;
+        if (showNetworkCamera && networkCameraUrl) {
+          const response = await fetch(networkCameraUrl);
+          const reader = response.body.getReader();
+          const mediaSource = new MediaSource();
+          videoElement.current.src = URL.createObjectURL(mediaSource);
+
+          mediaSource.addEventListener('sourceopen', async () => {
+            const sourceBuffer = mediaSource.addSourceBuffer('video/webm; codecs="vp8"');
+
+            try {
+              const { value, done } = await reader.read();
+              if (done) {
+                mediaSource.endOfStream();
+                return;
+              }
+              sourceBuffer.appendBuffer(value);
+            } catch (error) {
+              console.error('Error reading stream:', error);
+              mediaSource.endOfStream();
+            }
+          });
+
+          stream = mediaSource;
+        } else {
+          stream = await navigator.mediaDevices.getUserMedia({
+            audio: false,
+            video: {
+              deviceId: {
+                exact: deviceId,
+              },
             },
-          },
-        });
+          });
+        }
+
         videoElement.current.srcObject = stream;
         videoElement.current.play();
 
         setMediaStream(stream);
       }
     } catch (e) {
-      console.error('Could not access webcam:', e);
+      console.error('Could not access camera:', e);
     }
-  }, [setRecording, videoElement, deviceId]);
+  }, [setRecording, videoElement, deviceId, networkCameraUrl]);
 
   // ビデオの停止
   const stopRecording = useCallback(() => {
@@ -282,9 +366,32 @@ const VideoAnalyzerPage: React.FC = () => {
                 )}
               </div>
 
-              <div className="w-96">
-                <video ref={videoElement} />
+              <input
+                type="text"
+                placeholder="Enter network camera URL"
+                value={networkCameraUrl}
+                onChange={(e) => setNetworkCameraUrl(e.target.value)}
+              />
+
+              <div>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={showNetworkCamera}
+                    onChange={(e) => setShowNetworkCamera(e.target.checked)}
+                  />
+                  Show Network Camera
+                </label>
               </div>
+
+              <div className="w-96">
+                <video ref={videoElement} autoPlay>
+                  {showNetworkCamera && networkCameraUrl && (
+                    <source src={networkCameraUrl} type="video/webm" />
+                  )}
+                </video>
+              </div>
+
             </div>
 
             <div className="mt-3 w-full xl:mt-0">
