@@ -35,8 +35,8 @@
       "stability.stable-diffusion-xl-v1"
     ],
     "endpointNames": [],
-    "searchAgentEnabled": true,
-    "searchApiKey": "BSAxmo32I7t0v_VjW-syEFxYimOQys0",
+    "searchAgentEnabled": false,
+    "searchApiKey": "",
     "agentEnabled": false,
     "agentRegion": "us-east-1",
     "agents": [],
