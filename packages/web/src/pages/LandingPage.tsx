@@ -216,7 +216,7 @@ After speech recognition is complete, press the "Format" button (the speech reco
       {
         title: 'Formatting',
         description:
-          'Use the "Text Generation" function to format the transcribed file. It removes filler words and corrects parts where speech recognition may not have been accurate, making it easier for humans to understand.',
+          'Use the "Report Creator" function to format the transcribed file. It removes filler words and corrects parts where speech recognition may not have been accurate, making it easier for humans to understand.',
         path: 'generate',
         params: {
           context: {
@@ -236,7 +236,7 @@ After speech recognition is complete, press the "Format" button (the speech reco
       {
         title: 'Create Minutes',
         description:
-          'Use the "Text Generation" function to generate meeting minutes. By specifying the context in detail, you can instruct the format of the minutes and the level of detail to be included.',
+          'Use the "Report Creator" function to generate meeting minutes. By specifying the context in detail, you can instruct the format of the minutes and the level of detail to be included.',
         path: 'generate',
         params: {
           context: {

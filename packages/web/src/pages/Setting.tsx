@@ -106,15 +106,15 @@ const Setting = () => {
             className="text-aws-smile"
             to="https://docs.aws.amazon.com/ja_jp/cdk/v2/guide/home.html"
             target="_blank">
-            AWS CDK
+             AWS CDK
           </Link>
           , not on this screen. Also, if you encounter errors when executing use cases, be sure to check if you have enabled the specified models in 
-          <span className="font-bold">{modelRegion}</span>. For instructions on how to do each, please refer to 
+          <span className="font-bold"> {modelRegion}</span>. For instructions on how to do each, please refer to 
           <Link
             className="text-aws-smile"
             to="https://github.com/ddipass/generative-ai-use-cases-research"
             target="_blank">
-            generative-ai-use-cases-research
+             generative-ai-use-cases-research
           </Link>
           .
         </div>

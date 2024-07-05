@@ -138,7 +138,12 @@ export const claudePrompter: Prompter = {
             * Supported browser displays
             * Content unrelated to the main article
             </strings to be deleted>
-
+            <strings to be add>
+            * Reader-friendly punctuation marks
+            </strings to be add>
+            <format of the document to be created>
+            For a presentation, please organize it into chapters in markdown format.
+            </format of the document to be created>   
             <text>
             ${params.text}
             </text>

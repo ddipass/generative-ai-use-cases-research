@@ -653,7 +653,7 @@ const GenerateImagePage: React.FC = () => {
             rows={2}
           />
 
-          <div className="grid w-full grid-cols-2 gap-2">
+          <div className="grid w-full gap-2">
             <Select
               label="Model"
               value={imageGenModelId}
@@ -662,6 +662,9 @@ const GenerateImagePage: React.FC = () => {
                 return { value: m, label: m };
               })}
             />
+          </div>
+
+          <div className="grid w-full gap-2">
             <Select
               label="Size"
               value={resolution}
@@ -671,7 +674,7 @@ const GenerateImagePage: React.FC = () => {
           </div>
 
           <div className="grid w-full grid-cols-2 gap-2 pt-4">
-            <div className="relative col-span-2 flex flex-row items-center lg:col-span-1">
+            <div className="relative col-span-2 flex flex-row items-center">
               <RangeSlider
                 className="w-full"
                 label="Seed"
@@ -691,7 +694,7 @@ const GenerateImagePage: React.FC = () => {
             </div>
 
             <RangeSlider
-              className="col-span-2 lg:col-span-1"
+              className="col-span-2"
               label="Number of images to generate"
               min={1}
               max={7}
@@ -779,7 +782,7 @@ const GenerateImagePage: React.FC = () => {
                 )}
               </div>
 
-              <div className="col-span-2 flex flex-col items-center justify-start lg:col-span-1">
+              <div className="col-span-2 flex flex-col items-stretch justify-start lg:col-span-1">
                 <div className="mb-2 w-full">
                   <Select
                     label="StylePreset"

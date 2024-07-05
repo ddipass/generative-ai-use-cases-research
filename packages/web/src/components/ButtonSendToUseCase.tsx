@@ -76,7 +76,7 @@ const ButtonSendToUseCase: React.FC<Props> = (props) => {
                 path="/generate"
                 queryKey="information"
                 text={props.text}
-                title="Text Generation"
+                title="Report Creator"
                 // title="文章生成"
                 onClose={() => {
                   setShowModal(false);
