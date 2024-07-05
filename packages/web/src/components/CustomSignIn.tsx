@@ -2,7 +2,7 @@ import { useAuthenticator, CheckboxField, Text } from '@aws-amplify/ui-react';
 import { useState } from 'react';
 
 const CustomSignIn = () => {
-  const { signIn } = useAuthenticator();
+  const { signIn } = useAuthenticator((context) => [context.signIn]);
   const [agreed, setAgreed] = useState(false);
   const [error, setError] = useState('');
 
@@ -44,3 +44,5 @@ const CustomSignIn = () => {
     </form>
   );
 };
+
+export default CustomSignIn;
