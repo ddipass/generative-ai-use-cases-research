@@ -101,7 +101,7 @@ const PopupInterUseCasesDemo: React.FC<Props> = () => {
               navigateUseCase(currentIndex - 1);
             }}>
             <PiArrowFatLineLeftLight />
-            <span className="text-sm">前</span>
+            <span className="text-sm">Previous</span>
           </ButtonIcon>
           <div className="mx-5 mt-1 flex grow flex-col justify-center border border-gray-500 p-4 text-xs">
             {useCases[currentIndex].description}
@@ -113,7 +113,7 @@ const PopupInterUseCasesDemo: React.FC<Props> = () => {
               setCurrentIndex(currentIndex + 1);
               navigateUseCase(currentIndex + 1);
             }}>
-            <span className="text-sm">次</span>
+            <span className="text-sm">Next</span>
             <PiArrowFatLineRightLight />
           </ButtonIcon>
         </div>

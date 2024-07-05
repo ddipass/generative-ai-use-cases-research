@@ -145,7 +145,7 @@ By setting additional context, you can extract only the information you want.`,
         path: 'web-content',
         params: {
           url: {
-            value: 'https://aws.amazon.com/jp/what-is/generative-ai/',
+            value: 'https://aws.amazon.com/what-is/generative-ai/',
           },
           context: {
             value:
