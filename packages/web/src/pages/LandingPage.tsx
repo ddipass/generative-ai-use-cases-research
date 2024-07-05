@@ -105,8 +105,8 @@ The argument should be the term, and the processing should be written recursivel
     const params: TranslatePageQueryParams = {
       sentence:
         'Hello. 我是一名AI翻译助手, 请输入您要翻译的中文内容.',
-      additionalContext: '',
-      language: 'Englisht',
+      // additionalContext: '',
+      // language: 'English',
     };
     navigate(`/translate?${queryString.stringify(params)}`);
   };
@@ -303,7 +303,7 @@ Organize the content by chapters for each topic discussed in the meeting, summar
           />
         )}
         <CardDemo
-          label="Text Generation"
+          label="Report Creator"
           onClickDemo={demoGenerate}
           icon={<PiPencil />}
           description="Generating text in any context is one of the tasks that LLMs excel at. It can handle various contexts such as articles, reports, emails, and more."

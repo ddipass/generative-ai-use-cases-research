@@ -96,7 +96,6 @@ const TranslatePage: React.FC = () => {
     recording,
     clearTranscripts,
   } = useMicrophone();
-
   const { pathname, search } = useLocation();
   const {
     getModelId,
@@ -208,25 +207,34 @@ const TranslatePage: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [audio]);
 
-  // 録音機能がエラー終了した時にトグルスイッチをOFFにする
-  useEffect(() => {
-    if (!recording) {
-      setAudioInput(false);
-    }
-  }, [recording]);
+  // // 録音機能がエラー終了した時にトグルスイッチをOFFにする
+  // useEffect(() => {
+  //   if (!recording) {
+  //     setAudioInput(false);
+  //   }
+  // }, [recording]);
+
+  // // transcribeの要素が追加された時の処理. 左のボックスに自動入力する
+  // useEffect(() => {
+  //   // transcriptMic[*].transcriptが重複していたら削除する
+  //   const combinedTranscript = Array.from(
+  //     new Set(transcriptMic.map((t) => t.transcript))
+  //   ).join('');
+
+  //   if (combinedTranscript.length > 0) {
+  //     setSentence(combinedTranscript);
+  //   }
+
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [transcriptMic]);
+
   // transcribeの要素が追加された時の処理. 左のボックスに自動入力する
   useEffect(() => {
-    // transcriptMic[*].transcriptが重複していたら削除する
-    const combinedTranscript = Array.from(
-      new Set(transcriptMic.map((t) => t.transcript))
-    ).join('');
-
-    if (combinedTranscript.length > 0) {
-      setSentence(combinedTranscript);
+    if (transcriptMic && transcriptMic.length > 0) {
+      const _content: string = transcriptMic.map((t) => t.transcript).join(' ');
+      setSentence(_content);
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [transcriptMic]);
+  }, [setSentence, transcriptMic]);
 
   // LLM にリクエスト送信
   const getTranslation = (
@@ -279,9 +287,9 @@ const TranslatePage: React.FC = () => {
             </div>
           </div>
           <div className="flex w-full flex-col lg:flex-row">
-            <div className="w-full lg:w-1/2">
+            <div className="w-full">
               <div className="flex items-center py-2.5">
-                Auto-detect language
+                Voice Recognition Active
                 <div className="ml-2 justify-end">
                   {audio && (
                     <PiStopCircleBold
@@ -303,13 +311,13 @@ const TranslatePage: React.FC = () => {
               </div>
 
               <Textarea
-                placeholder="Please enter"
+                placeholder="Please Enter"
                 value={sentence}
                 onChange={setSentence}
                 maxHeight={-1}
               />
             </div>
-            <div className="w-full lg:ml-2 lg:w-1/2">
+            <div className="w-full lg:ml-2">
               <Select
                 value={language}
                 options={languages.map((l) => {
