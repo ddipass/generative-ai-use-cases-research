@@ -101,20 +101,20 @@ const Setting = () => {
           value={modelRegion}
         />
         <div className="mt-5 w-2/3 text-xs lg:w-1/2">
-          Changes to settings are made using
+          Changes to settings are made using 
           <Link
             className="text-aws-smile"
             to="https://docs.aws.amazon.com/ja_jp/cdk/v2/guide/home.html"
             target="_blank">
             AWS CDK
           </Link>
-          , not on this screen. Also, if you encounter errors when executing use cases, be sure to check if you have enabled the specified models in
-          <span className="font-bold">{modelRegion}</span>. For instructions on how to do each, please refer to
+          , not on this screen. Also, if you encounter errors when executing use cases, be sure to check if you have enabled the specified models in 
+          <span className="font-bold">{modelRegion}</span>. For instructions on how to do each, please refer to 
           <Link
             className="text-aws-smile"
-            to="https://github.com/aws-samples/generative-ai-use-cases-jp"
+            to="https://github.com/ddipass/generative-ai-use-cases-research"
             target="_blank">
-            generative-ai-use-cases-jp
+            generative-ai-use-cases-research
           </Link>
           .
         </div>

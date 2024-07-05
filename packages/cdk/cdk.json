@@ -17,10 +17,10 @@
     ]
   },
   "context": {
-    "ragEnabled": false,
+    "ragEnabled": true,
     "kendraIndexArn": null,
     "kendraDataSourceBucketName": null,
-    "ragKnowledgeBaseEnabled": false,
+    "ragKnowledgeBaseEnabled": true,
     "embeddingModelId": "amazon.titan-embed-text-v2:0",
     "selfSignUpEnabled": true,
     "allowedSignUpEmailDomains": null,
@@ -35,20 +35,26 @@
       "stability.stable-diffusion-xl-v1"
     ],
     "endpointNames": [],
-    "agentEnabled": false,
+    "agentEnabled": true,
     "agentRegion": "us-east-1",
-    "searchAgentEnabled": false,
-    "searchApiKey": "",
-    "agents": [],
+    "searchAgentEnabled": true,
+    "searchApiKey": "BSAxmo32I7t0v_VjW-syEFxYimOQys0",
+    "agents": [
+	  {
+            "displayName": "SearchEngine",
+            "agentId": "XXXXXXXXX",
+            "aliasId": "YYYYYYYY"
+          }
+    ],
     "allowedIpV4AddressRanges": null,
     "allowedIpV6AddressRanges": null,
     "allowedCountryCodes": null,
     "hostName": null,
     "domainName": null,
     "hostedZoneId": null,
-    "dashboard": false,
+    "dashboard": true,
     "anonymousUsageTracking": true,
-    "recognizeFileEnabled": false,
+    "recognizeFileEnabled": true,
     "vpcId": null,
     "crossAccountBedrockRoleArn": "",
     "@aws-cdk/aws-lambda:recognizeLayerVersion": true,
