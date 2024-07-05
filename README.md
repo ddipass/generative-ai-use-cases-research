@@ -1,7 +1,9 @@
+Here's the translation with Japanese parts translated to English while preserving other content and format:
+
 > [!IMPORTANT]
 > This repository is currently developed for Japanese users. If you wish for multilingual support, please react to [this issue](https://github.com/aws-samples/generative-ai-use-cases-jp/issues/151).
 
-# Generative AI Use Cases for Researcher (Abbreviation: GenU)
+# Generative AI Use Cases JP (Abbreviation: GenU)
 
 Generative AI brings revolutionary possibilities for business transformation. GenU is an application implementation with a collection of business use cases for safely utilizing generative AI in business operations.
 
@@ -13,7 +15,7 @@ This repository also provides a browser extension, allowing you to use generativ
 
 ## List of Use Cases
 
-> Use cases will be added regularly. If you have any requests, please create an [Issue](https://github.com/ddipass/generative-ai-use-cases-research/issues).
+> Use cases will be added regularly. If you have any requests, please create an [Issue](https://github.com/aws-samples/generative-ai-use-cases-jp/issues).
 
 <details>
   <summary>Chat</summary>
@@ -125,4 +127,66 @@ If you've never used CDK before, you need to perform a [Bootstrap](https://docs.
 npx -w packages/cdk cdk bootstrap
 ```
 
-Next, deploy AWS resources with the following command. Please wait for the deployment to▍
+Next, deploy AWS resources with the following command. Please wait for the deployment to complete (it may take about 20 minutes).
+
+```bash
+npm run cdk:deploy
+```
+
+## [Deployment Options](/docs/DEPLOY_OPTION.md)
+- [Configuration Method](/docs/DEPLOY_OPTION.md#configuration-method)
+  - [How to change values in cdk.json](/docs/DEPLOY_OPTION.md#how-to-change-values-in-cdkjson)
+- [Use Case Settings](/docs/DEPLOY_OPTION.md#use-case-settings)
+  - [Enabling RAG Chat (Amazon Kendra) Use Case](/docs/DEPLOY_OPTION.md#enabling-rag-chat-amazon-kendra-use-case)
+    - [If you want to use an existing Amazon Kendra Index](/docs/DEPLOY_OPTION.md#if-you-want-to-use-an-existing-amazon-kendra-index)
+  - [Enabling RAG Chat (Knowledge Base) Use Case](/docs/DEPLOY_OPTION.md#enabling-rag-chat-knowledge-base-use-case)
+    - [How to make changes to the OpenSearch Service Index, such as changing the embeddingModelId](/docs/DEPLOY_OPTION.md#how-to-make-changes-to-the-opensearch-service-index-such-as-changing-the-embeddingmodelid)
+    - [How to check the OpenSearch Service Index in the management console](/docs/DEPLOY_OPTION.md#how-to-check-the-opensearch-service-index-in-the-management-console)
+  - [Enabling Agent Chat Use Case](/docs/DEPLOY_OPTION.md#enabling-agent-chat-use-case)
+    - [Deploying the Search Agent](/docs/DEPLOY_OPTION.md#deploying-the-search-agent)
+    - [Deploying the Knowledge Base Agent](/docs/DEPLOY_OPTION.md#deploying-the-knowledge-base-agent)
+  - [Enabling Video Analysis Use Case](/docs/DEPLOY_OPTION.md#enabling-video-analysis-use-case)
+- [Changing Amazon Bedrock Models](/docs/DEPLOY_OPTION.md#changing-amazon-bedrock-models)
+  - [Example of using Amazon Bedrock models in us-east-1 (Virginia)](/docs/DEPLOY_OPTION.md#example-of-using-amazon-bedrock-models-in-us-east-1-virginia)
+  - [Example of using Amazon Bedrock models in ap-northeast-1 (Tokyo)](/docs/DEPLOY_OPTION.md#example-of-using-amazon-bedrock-models-in-ap-northeast-1-tokyo)
+- [If you want to use Amazon SageMaker custom models](/docs/DEPLOY_OPTION.md#if-you-want-to-use-amazon-sagemaker-custom-models)
+  - [Example of using Rinna 3.6B and Bilingual Rinna 4B](/docs/DEPLOY_OPTION.md#example-of-using-rinna-36b-and-bilingual-rinna-4b)
+  - [Example of using ELYZA-japanese-Llama-2-7b-instruct](/docs/DEPLOY_OPTION.md#example-of-using-elyza-japanese-llama-2-7b-instruct)
+- [Security-related Settings](/docs/DEPLOY_OPTION.md#security-related-settings)
+  - [Disabling Self-signup](/docs/DEPLOY_OPTION.md#disabling-self-signup)
+  - [Restricting Email Domains for Signup](/docs/DEPLOY_OPTION.md#restricting-email-domains-for-signup)
+  - [Enabling Restrictions with AWS WAF](/docs/DEPLOY_OPTION.md#enabling-restrictions-with-aws-waf)
+    - [IP Restrictions](/docs/DEPLOY_OPTION.md#ip-restrictions)
+    - [Geographic Restrictions](/docs/DEPLOY_OPTION.md#geographic-restrictions)
+  - [SAML Authentication](/docs/DEPLOY_OPTION.md#saml-authentication)
+- [Enabling Monitoring Dashboard](/docs/DEPLOY_OPTION.md#enabling-monitoring-dashboard)
+- [Enabling File Upload Feature](/docs/DEPLOY_OPTION.md#enabling-file-upload-feature)
+- [If you want to use Bedrock from a different AWS account](/docs/DEPLOY_OPTION.md#if-you-want-to-use-bedrock-from-a-different-aws-account)
+
+## Other
+ - [How to Update](/docs/UPDATE.md)
+ - [Local Development Environment Setup Procedure](/docs/DEVELOPMENT.md)
+ - [How to Delete Resources](/docs/DESTROY.md)
+ - [Deployment Method Entirely on AWS (for cases where it's difficult to prepare an environment locally)](/docs/DEPLOY_ON_AWS.md)
+ - [How to Use as a Native App](/docs/PWA.md)
+ - [Using the Browser Extension](/browser-extension/README.md)
+
+## Cost Estimation
+We have published [a configuration and cost estimation example for using GenU](https://aws.amazon.com/jp/cdp/ai-chatapp/).  
+This cost estimation example assumes that the RAG chat feature using Amazon Kendra is enabled.
+Please note that it does not include optional features such as AWS WAF for enhanced security, file upload functionality, or options using Knowledge Base.
+It is based on a pay-as-you-go model, and actual costs will vary depending on your usage.
+
+## References
+ - [Blog: How to Customize Generative AI Use Cases JP](https://aws.amazon.com/jp/blogs/news/how-to-generative-ai-use-cases-jp/)
+ - [Blog: Developing an Interpreter with Amazon Bedrock!](https://aws.amazon.com/jp/builders-flash/202311/bedrock-interpreter/)
+ - [Blog: Let's Have Generative AI Refuse Unreasonable Requests ~ Integrating Generative AI into the Browser ~](https://aws.amazon.com/jp/builders-flash/202405/genai-sorry-message/)
+ - [Video: The Appeal and Usage of Generative AI Use Cases JP (GenU) for Thoroughly Considering Generative AI Use Cases](https://www.youtube.com/live/s1P5A2SIWgc?si=PBQ4ZHQXU4pDhL8A)
+
+## Security
+
+See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+
+## License
+
+This library is licensed under the MIT-0 License. See the LICENSE file.
