@@ -113,7 +113,7 @@ const TranslatePage: React.FC = () => {
     return getPrompter(modelId);
   }, [modelId]);
   const [auto, setAuto] = useLocalStorageBoolean('Auto_Translate', true);
-  const [audio, setAudioInput] = useState(false); // 音声入力フラグ
+  // const [audio, setAudioInput] = useState(false); // 音声入力フラグ
 
   useEffect(() => {
     updateSystemContextByModel();
@@ -122,8 +122,8 @@ const TranslatePage: React.FC = () => {
 
   // Memo 変数
   const disabledExec = useMemo(() => {
-    return sentence === '' || loading;
-  }, [sentence, loading]);
+    return loading;
+  }, [loading]);
 
   useEffect(() => {
     const _modelId = !modelId ? availableModels[0] : modelId;
@@ -199,13 +199,13 @@ const TranslatePage: React.FC = () => {
   // 音声入力フラグの切り替え
   // audioのトグルボタンがOnになったら、startTranscriptionを実行する
   useEffect(() => {
-    if (audio) {
+    if (recording) {
       startTranscription();
     } else {
       stopTranscription();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [audio]);
+  }, [recording]);
 
   // // 録音機能がエラー終了した時にトグルスイッチをOFFにする
   // useEffect(() => {
@@ -289,23 +289,18 @@ const TranslatePage: React.FC = () => {
           <div className="flex w-full flex-col lg:flex-row">
             <div className="w-full">
               <div className="flex items-center py-2.5">
-                Voice Recognition Active
                 <div className="ml-2 justify-end">
-                  {audio && (
-                    <PiStopCircleBold
-                      onClick={() => {
-                        stopTranscription();
-                        setAudioInput(false);
-                      }}
-                      className="h-5 w-5 cursor-pointer text-orange-500"></PiStopCircleBold>
-                  )}
-                  {!audio && (
-                    <PiMicrophoneBold
-                      onClick={() => {
-                        startTranscription();
-                        setAudioInput(true);
-                      }}
-                      className="h-5 w-5 cursor-pointer"></PiMicrophoneBold>
+                  {recording ? (
+                    <Button disabled={disabledExec} onClick={stopTranscription}>
+                      <PiMicrophone className="h-5 w-5 cursor-pointer text-orange-500"/> Voice Recognition Active
+                    </Button>
+                  ) : (
+                    <Button
+                      outlined
+                      disabled={disabledExec}
+                      onClick={startTranscription}>
+                      <PiMicrophoneSlash className="h-5 w-5 cursor-pointer"/> Voice Recognition Inactive
+                    </Button>
                   )}
                 </div>
               </div>
