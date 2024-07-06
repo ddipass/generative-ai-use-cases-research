@@ -16,8 +16,6 @@
     "@aws-sdk/client-transcribe": "^3.549.0",
     "@aws-sdk/client-transcribe-streaming": "^3.549.0",
     "@aws-sdk/credential-provider-cognito-identity": "^3.549.0",
-    "@ffmpeg/ffmpeg": "^0.12.10",
-    "@ffmpeg/util": "^0.12.1",
     "@headlessui/react": "^1.7.18",
     "@react-icons/all-files": "^4.1.0",
     "@types/uuid": "^9.0.8",
