@@ -268,97 +268,77 @@ const TranslatePage: React.FC = () => {
   }, []);
 
   return (
-   <div className="grid grid-cols-12">
-      <div className="invisible col-span-12 my-0 flex h-0 items-center justify-center text-xl font-semibold lg:visible lg:my-5 lg:h-min print:visible print:my-5 print:h-min">
-        Translation
-      </div>
-      <div className="col-span-12 col-start-1 mx-2 lg:col-span-10 lg:col-start-2 xl:col-span-10 xl:col-start-2">
-        <Card label="Text to translate">
-          <div className="flex w-full flex-col justify-between sm:flex-row">
+    <div className="grid grid-cols-12 gap-4">
+      <div className="col-span-12 lg:col-span-10 lg:col-start-2 xl:col-span-8 xl:col-start-3">
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-xl font-semibold">Translation</h2>
+          <div className="flex items-center">
             <Select
               value={modelId}
               onChange={setModelId}
-              options={availableModels.map((m) => {
-                return { value: m, label: m };
-              })}
+              options={availableModels.map((m) => ({ value: m, label: m }))}
+              className="mr-2"
             />
-            <div className="col-span-12 col-start-1 mx-2 lg:col-span-10 lg:col-start-2 xl:col-span-10 xl:col-start-2">
-              <Switch label="Auto-translate" checked={auto} onSwitch={setAuto} />
-            </div>
+            <Switch label="Auto-translate" checked={auto} onSwitch={setAuto} />
           </div>
-          
-          <div className="flex w-full flex-col lg:flex-row">
-            <div className="w-full">
-              <div className="flex items-center py-2.5">
-                <div className="ml-2 justify-end">
+        </div>
+        <Card label="Text to translate">
+          <div className="flex flex-col lg:flex-row">
+            <div className="w-full lg:mr-2">
+              <div className="mb-2 flex items-center justify-between">
+                <div>
                   {recording ? (
                     <Button disabled={disabledExec} onClick={stopTranscription}>
-                      <PiMicrophone className="h-5 w-5 cursor-pointer text-orange-500"/> Voice Recognition Active
+                      <PiMicrophone className="h-5 w-5 text-orange-500" /> Voice Recognition Active
                     </Button>
                   ) : (
-                    <Button
-                      outlined
-                      disabled={disabledExec}
-                      onClick={startTranscription}>
-                      <PiMicrophoneSlash className="h-5 w-5 cursor-pointer"/> Voice Recognition Inactive
+                    <Button disabled={disabledExec} onClick={startTranscription}>
+                      <PiMicrophoneSlash className="h-5 w-5" /> Voice Recognition Inactive
                     </Button>
                   )}
                 </div>
               </div>
+              <Textarea
+                placeholder="Please Enter"
+                value={sentence}
+                onChange={setSentence}
+                maxHeight={-1}
+              />
             </div>
-          </div>
-
-          <div className="flex w-full flex-col lg:flex-row">
-            <div className="w-full lg:ml-2">
-                <Textarea
-                  placeholder="Please Enter"
-                  value={sentence}
-                  onChange={setSentence}
-                  maxHeight={-1}
-                />
-            </div>
-          </div>
-
-          <div className="flex w-full flex-col lg:flex-row">
             <div className="w-full lg:ml-2">
               <Select
                 value={language}
-                options={languages.map((l) => {
-                  return { value: l, label: l };
-                })}
+                options={languages.map((l) => ({ value: l, label: l }))}
                 onChange={setLanguage}
+                className="mb-2"
               />
               <div className="rounded border border-black/30 p-1.5">
                 <Markdown>{typingTextOutput}</Markdown>
                 {loading && (
                   <div className="border-aws-sky size-5 animate-spin rounded-full border-4 border-t-transparent"></div>
                 )}
-                <div className="flex w-full justify-end">
+                <div className="flex justify-end">
                   <ButtonCopy
                     text={translatedSentence}
-                    interUseCasesKey="translatedSentence"></ButtonCopy>
+                    interUseCasesKey="translatedSentence"
+                  ></ButtonCopy>
                 </div>
               </div>
             </div>
           </div>
-
-          <div className="flex w-full flex-col lg:flex-row">
-            <div className="w-full lg:ml-2">
-              <ExpandableField label="Additional Context" optional>
-                <Textarea
-                  placeholder="You can enter additional points you want to be considered (e.g., casualness)"
-                  value={additionalContext}
-                  onChange={setAdditionalContext}
-                />
-              </ExpandableField>
-            </div>
+          <div className="mt-4">
+            <ExpandableField label="Additional Context" optional>
+              <Textarea
+                placeholder="You can enter additional points you want to be considered (e.g., casualness)"
+                value={additionalContext}
+                onChange={setAdditionalContext}
+              />
+            </ExpandableField>
           </div>
-
-          <div className="flex justify-end gap-3">
+          <div className="mt-4 flex justify-end gap-3">
             <Button outlined onClick={onClickClear} disabled={disabledExec}>
               Clear
             </Button>
-
             <Button disabled={disabledExec} onClick={onClickExec}>
               Execute
             </Button>
@@ -367,6 +347,5 @@ const TranslatePage: React.FC = () => {
       </div>
     </div>
   );
-};
 
 export default TranslatePage;
