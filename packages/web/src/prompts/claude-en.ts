@@ -1082,24 +1082,6 @@ export const claudePrompter: Prompter = {
           },
           {
             title: 'Material Sciences',
-            systemContext: `The following is a conversation between a user and an AI assistant who is a drug expert, biochemistry expert, and structural biology expert. Please output the prediction and explanation in the format given within the <output></output> XML tags, following the instructions in <instruction></instruction>.
-                           When outputting the prediction and explanation, strictly adhere to the rules given within the <rule></rule> XML tags. There are no exceptions.
-                           <rule>
-                           * Output should be in the format <output>{prediction: ..., explanation: ...}</output> with a dictionary.
-                           * The dictionary should have keys 'prediction' and 'explanation'.
-                           * The 'prediction' value should be either 'Yes' or 'No', indicating if the compound can interact with the protein (IC50 < 100nm).
-                           * The 'explanation' value should be a string providing detailed explanations about the protein function and property, the compound function and property, and the reasoning behind the prediction.
-                           </rule>`,
-            prompt: `<instruction>
-                     You are a drug expert, biochemistry expert, and structural biology expert. Given a compound IUPAC name with SMILES sequence and a target protein name with FASTA sequence, you should answer whether this compound can interact with the protein, which means their IC50 affinity value is less than 100nm. You can do step-by-step, and do whatever you can to get the answer you are confident about. Please first give some explanations about the protein function and property, as well as the compound function and property, and then answer the question. Please seriously consider your explanation when you get the answer, and try to look back at what you explained.
-                     SMILES: COC1=NC=C(C=C1)COC2=C(C=C(C=C2)CN3C=NC4=C3N=CC(=C4)C5=NN=C(O5)C6CCNCC6)OC
-                     IUPAC name: 2-[3-[[3-methoxy-4-[(6-methoxypyridin-3-yl)methoxy]phenyl]methyl]imidazo[4,5-b]pyridin-6-yl]-5-piperidin-4-yl-1,3,4- oxadiazole
-                     FASTA: MSSWIRWHGPAMARLWGFCWLVVGFWRAAFACPTSCKCSA...TLLQNLAKASPVYLDILG
-                     Protein name: BDNF/NT-3
-                    </instruction>`
-          },
-          {
-            title: 'Material Sciences',
             systemContext: `The following is a conversation between a user and an AI assistant who is a drug expert, biochemistry expert, and structural biology expert. Please output the prediction and explanation in the Markdown format given within the <output></output> XML tags, following the instructions in <instruction></instruction>.
                            When outputting the prediction and explanation, strictly adhere to the rules given within the <rule></rule> XML tags. There are no exceptions.
                            <rule>
