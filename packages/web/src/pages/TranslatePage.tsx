@@ -347,5 +347,5 @@ const TranslatePage: React.FC = () => {
       </div>
     </div>
   );
-
+};
 export default TranslatePage;
