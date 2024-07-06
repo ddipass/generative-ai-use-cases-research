@@ -659,7 +659,203 @@ export const claudePrompter: Prompter = {
         ],
       },
       {
-        title: 'Experimental',
+        title: 'Manufacture',
+        experimental: true,
+        items: [
+          {
+            title: 'Write Product Whitepaper',  
+            systemContext: `The following is a conversation between a user and an AI assistant skilled in information processing for manufacturing products.
+                            Please output the document in the format specified within the <output></output> XML tags, following the instructions in <instruction></instruction>.
+                            Adhere strictly to the rules given within the <rule></rule> XML tags.
+                            <rule>
+                            * Output should be in the format <output>\`\`\`{document}\`\`\`</output> with only the document content.
+                            * Write a complete and coherent document that addresses the given instruction.
+                            * Do not include any code or programming language.
+                            </rule>`,
+            prompt: `<instruction>
+                     Based on the latest user feedback data and market research reports for the Amazon Echo smart speaker line, write a comprehensive product whitepaper analyzing:
+                     - Market overview and competitive landscape (e.g. 35% market share, key competitors like Google Home and Apple HomePod)
+                     - Summary of user feedback and pain points (e.g. 27% want better sound quality, 18% need more smart home integration)
+                     - Product line roadmap and innovation directions (e.g. spatial audio, custom voice models, enhanced privacy)
+                     - Projected economic benefits and investment returns (e.g. $2B revenue increase, 40% ROI in 3 years)
+                     </instruction>`
+          },
+          {
+            title: 'Analyze Manufacturing Data',
+            systemContext: `The following is a conversation between a user and an AI assistant skilled in data analysis for manufacturing.
+                            Please output the analysis in the format specified within the <output></output> XML tags, following the instructions in <instruction></instruction>.
+                            Adhere strictly to the rules given within the <rule></rule> XML tags.
+                            <rule>
+                            * Output should be in the format <output>\`\`\`{analysis}\`\`\`</output> with only the analysis content.
+                            * Provide a thorough analysis that addresses the given instruction.
+                            * Do not include any code or programming language.
+                            </rule>`,
+            prompt: `<instruction>
+                     Analyze the manufacturing data from the last quarter for the 4th generation Amazon Echo Dot, including:
+                     - Production line efficiency and defect rates (e.g. 85% efficiency, 3.2% defect rate)
+                     - Root cause analysis of major failure modes (e.g. 45% due to acoustic module faults) 
+                     - Raw material and labor costs breakdown (e.g. $15 materials, $7 labor per unit)
+                     Based on the analysis, provide recommendations to reduce the defect rate below 0.5% and manufacturing costs by over 5%.
+                     </instruction>`
+          },
+          {
+            title: 'Build Knowledge Base',
+            systemContext: `The following is a conversation between a user and an AI assistant skilled in knowledge management for manufacturing.
+                            Please output the knowledge management solution in the format specified within the <output></output> XML tags, following the instructions in <instruction></instruction>.
+                            Adhere strictly to the rules given within the <rule></rule> XML tags.
+                            <rule>
+                            * Output should be in the format <output>\`\`\`{solution}\`\`\`</output> with only the solution content.
+                            * Provide a comprehensive solution that addresses the given instruction.
+                            * Do not include any code or programming language.
+                            </rule>`,
+            prompt: `<instruction>
+                     Build a knowledge base system to manage and maintain all patents, technical literature, design standards and best practices related to the Amazon Echo smart speaker product line. The knowledge base should:
+                     - Support natural language querying and intelligent recommendation
+                     - Integrate with expert systems for design decision support (e.g. materials selection, acoustics modeling)
+                     - Continuously learn and automatically ingest new patents and technical papers
+                     - Provide multi-language support and version control
+                     - Enable knowledge graph visualization and relationship mining
+                     </instruction>`
+          },
+          {
+            title: 'Provide Intelligent Assistance',
+            systemContext: `The following is a conversation between a user and an AI assistant skilled in providing intelligent assistance for manufacturing.
+                            Please output the assistance solution in the format specified within the <output></output> XML tags, following the instructions in <instruction></instruction>.
+                            Adhere strictly to the rules given within the <rule></rule> XML tags.
+                            <rule>
+                            * Output should be in the format <output>\`\`\`{solution}\`\`\`</output> with only the solution content.
+                            * Provide a comprehensive solution that addresses the given instruction.
+                            * Do not include any code or programming language.
+                            </rule>`,
+            prompt: `<instruction>
+                     Develop an AI-powered intelligent design assistant system to aid the industrial design of new products in the Amazon Echo line. The system should:
+                     - Engage in conversational natural language interaction to accurately capture design requirements
+                     - Automatically generate innovative design concepts leveraging the knowledge base  
+                     - Evaluate and optimize design concepts using machine learning models
+                     - Perform design rule checking and manufacturability analysis
+                     - Generate interactive 3D prototypes for virtual design reviews and testing
+                     </instruction>`
+          },
+          {
+            title: 'Generate Product Documentation',
+            systemContext: `The following is a conversation between a user and an AI assistant skilled in content generation for manufacturing products. 
+                            Please output the generated content in the format specified within the <output></output> XML tags, following the instructions in <instruction></instruction>.
+                            Adhere strictly to the rules given within the <rule></rule> XML tags.
+                            <rule>
+                            * Output should be in the format <output>\`\`\`{content}\`\`\`</output> with only the generated content.
+                            * Generate complete and coherent content that addresses the given instruction.
+                            * Do not include any code or programming language.
+                            </rule>`,
+            prompt: `<instruction>
+                     Generate a marketing brochure for the Amazon Echo Studio flagship smart speaker, including but not limited to:
+                     - Key selling points and innovative technologies (e.g. 3D audio, Dolby Atmos, machine learning powered audio processing)
+                     - Main features and usage scenarios (e.g. immersive music listening, home theater, voice control)
+                     - Technical specifications and configuration details (e.g. 5 speakers, 330W output, 24-bit DAC)
+                     - Compatibility and comparison with competing products (e.g. Apple HomePod, Sonos speakers)
+                     </instruction>`  
+          },
+        ],
+      },
+      {
+        title: 'Research',
+        experimental: true,
+        items: [
+          {
+            title: 'Geosciences',
+            systemContext: `The following is a conversation between a user and an AI programmer who can understand instructions well.
+                            Please output code in the language given within the <language></language> XML tags, following the instructions in <instruction></instruction>.
+                            When outputting code, strictly adhere to the rules given within the <rule></rule> XML tags. There are no exceptions.
+                            <rule>
+                            * Output should be in the format <output>\`\`\`{code}\`\`\`</output> with only the code.
+                            * Write complete code that can be copied and pasted to work.
+                            * Do not use Japanese in the code.
+                            </rule>`,
+            prompt: `<language>JavaScript</language>
+                     <instruction>
+                     Use Google Earth Engine to calculate the Normalized Difference Vegetation Index (NDVI) for a region of interest in California from Landsat 8 imagery acquired in 2020. Export the result as a GEE asset.
+                     </instruction>`
+          },
+          {
+            title: 'Chemistry',
+            systemContext: `The following is a conversation between a user and an AI assistant that is an organic chemistry and reaction optimization expert. Please output the most promising reaction conditions in the format given within the <output></output> XML tags, following the instructions in <instruction></instruction>.
+                           When outputting reaction conditions, strictly adhere to the rules given within the <rule></rule> XML tags. There are no exceptions.
+                           <rule>
+                           * Output should be in the format <output>[{'Aryl_halide': ..., 'Additive': ..., 'Base': ..., 'Ligand': ..., 'yield': ...}, {...}]</output> with a list of Python dictionaries.
+                           * Each dictionary should have keys 'Aryl_halide', 'Additive', 'Base', 'Ligand', and 'yield' with corresponding values.
+                           * The values for 'Aryl_halide', 'Additive', 'Base', and 'Ligand' should be chosen from the provided categories.
+                           * The 'yield' value should be a float representing the predicted reaction yield.
+                           </rule>`,
+            prompt: `<instruction>
+                     You are an AI assistant that is an organic chemistry and reaction optimization expert. Your objective is to propose reaction conditions to maximize the yield of a Suzuki reaction. The search space is limited to combinations from the following reaction conditions:
+                     Category Aryl_halide: 1chloro-4(trifluoromethyl)benzene, 1bromo-4(trifluoromethyl)benzene, 2iodopyridine, ...
+                     Category Additive: 5phenylisoxazole, ethylisoxazole-4carboxylate, ethyl5methylisoxazole3carboxylate, ...
+                     Category Base: P2Et, BTMG, MTBD, ...
+                     Category Ligand: Pd0XPhos, Pd0tBuXPhos, Pd0tBuBrettPhos, Pd0AdBrettPhos, ...
+                     </instruction>`
+          },
+          {
+            title: 'Bioinformatics',
+            systemContext: `The following is a conversation between a user and an AI assistant who is an expert in genomics and bioinformatics. Please output the predictions and explanations in the format given within the <output></output> XML tags, following the instructions in <instruction></instruction>.
+                           When outputting predictions and explanations, strictly adhere to the rules given within the <rule></rule> XML tags. There are no exceptions.
+                           <rule>
+                           * Output should be in the format <output>{Case 1: [{sequence: ..., prediction: ..., explanation: ...}, {...}], Case 2: [{sequence: ..., prediction: ..., explanation: ...}, {...}]}</output> with lists of dictionaries for each case.
+                           * Each dictionary should have keys 'sequence', 'prediction', and 'explanation'.
+                           * The 'sequence' value should be the DNA sequence given in the prompt.
+                           * The 'prediction' value should be either True or False, indicating if the transcription factor can bind to the sequence.
+                           * The 'explanation' value should be a string explaining the reasoning behind the prediction.
+                           </rule>`,
+            prompt: `<instruction>
+                     Prompt: (Case 1)
+                     Predict if MYC can bind to the 4 DNA sequences below, delimited by triple backticks. Output True if the sequence is likely to be bound by MYC. Output False otherwise. Please give me the explanations of your result.
+                     CCACGTGC
+                     ACACGTGG
+                     CCGTGTGC
+                     CCCAATTC
+
+                     Prompt: (Case 2)
+                     Predict if ZNF143 can bind to the 4 DNA sequences below, delimited by triple backticks. Output True if the sequence is likely to be bound by ZNF143. Output False otherwise. Also, list step-by-step how you reach the conclusion.
+                     TTCCCACAATGCATCG
+                     CTCCCATGGTGCCCCG
+                     TTCCCAGTGTGCAGGG
+                     GGAAAGTTTTGAAGGC
+                     </instruction>`
+          },
+          {
+            title: 'Material Sciences',
+            systemContext: `The following is a conversation between a user and an AI assistant who is a drug expert, biochemistry expert, and structural biology expert. Please output the prediction and explanation in the format given within the <output></output> XML tags, following the instructions in <instruction></instruction>.
+                           When outputting the prediction and explanation, strictly adhere to the rules given within the <rule></rule> XML tags. There are no exceptions.
+                           <rule>
+                           * Output should be in the format <output>{prediction: ..., explanation: ...}</output> with a dictionary.
+                           * The dictionary should have keys 'prediction' and 'explanation'.
+                           * The 'prediction' value should be either 'Yes' or 'No', indicating if the compound can interact with the protein (IC50 < 100nm).
+                           * The 'explanation' value should be a string providing detailed explanations about the protein function and property, the compound function and property, and the reasoning behind the prediction.
+                           </rule>`,
+            prompt: `<instruction>
+                     You are a drug expert, biochemistry expert, and structural biology expert. Given a compound IUPAC name with SMILES sequence and a target protein name with FASTA sequence, you should answer whether this compound can interact with the protein, which means their IC50 affinity value is less than 100nm. You can do step-by-step, and do whatever you can to get the answer you are confident about. Please first give some explanations about the protein function and property, as well as the compound function and property, and then answer the question. Please seriously consider your explanation when you get the answer, and try to look back at what you explained.
+                     SMILES: COC1=NC=C(C=C1)COC2=C(C=C(C=C2)CN3C=NC4=C3N=CC(=C4)C5=NN=C(O5)C6CCNCC6)OC
+                     IUPAC name: 2-[3-[[3-methoxy-4-[(6-methoxypyridin-3-yl)methoxy]phenyl]methyl]imidazo[4,5-b]pyridin-6-yl]-5-piperidin-4-yl-1,3,4- oxadiazole
+                     FASTA: MSSWIRWHGPAMARLWGFCWLVVGFWRAAFACPTSCKCSA...TLLQNLAKASPVYLDILG
+                     Protein name: BDNF/NT-3
+                    </instruction>`
+          },
+          {
+            title: 'Physics',
+            systemContext: `The following is a conversation between a user and an AI assistant who is an expert in computational chemistry and physics. Please output the PySCF script in the format given within the <output></output> XML tags, following the instructions in <instruction></instruction>.
+                           When outputting the script, strictly adhere to the rules given within the <rule></rule> XML tags. There are no exceptions.
+                           <rule>
+                           * Output should be in the format <output>\`\`\`{script}\`\`\`</output> with the script enclosed in triple backticks.
+                           * The script should be written in Python and use the PySCF library.
+                           * The script should generate the bond dissociation potential energy surface (PES) of N2 using MRCI with aug-cc-pvdz basis set.
+                           * The bond lengths of the two N atoms should range from 0.8 Å to 10 Å.
+                           </rule>`,
+            prompt: `<instruction>
+                     Could you provide me a PySCF script to generate the bond dissociation PES of N2 using MRCI with aug-cc-pvdz basis set? The bond lengths of two N atoms are ranging from 0.8 Å to 10 Å.
+                     </instruction>`
+          },
+        ],
+      },
+      {
+        title: 'Multiple Exports (MoE)',
         experimental: true,
         items: [
           {
