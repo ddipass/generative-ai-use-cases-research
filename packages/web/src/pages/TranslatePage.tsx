@@ -32,10 +32,7 @@ const languages = [
 
 type StateType = {
   sentence: string;
-  oldsentence: string;
-  onesentence: string;
   setSentence: (s: string) => void;
-  setOldSentence: (s: string) => void;  
   additionalContext: string;
   setAdditionalContext: (s: string) => void;
   language: string;
@@ -57,16 +54,6 @@ const useTranslatePageState = create<StateType>((set) => {
     setSentence: (s: string) => {
       set(() => ({
         sentence: s,
-      }));
-    },
-    setOldSentence: (s: string) => {
-      set(() => ({
-        oldsentence: s,
-      }));
-    },
-    setOneSentence: (s: string) => {
-      set(() => ({
-        onesentence: s,
       }));
     },
     setAdditionalContext: (s: string) => {
@@ -94,10 +81,6 @@ const TranslatePage: React.FC = () => {
   const {
     sentence,
     setSentence,
-    oldsentence,
-    setOldSentence,
-    onesentence,
-    setOneSentence,
     additionalContext,
     setAdditionalContext,
     language,
@@ -331,17 +314,6 @@ const TranslatePage: React.FC = () => {
                   placeholder="Please Enter"
                   value={sentence}
                   onChange={setSentence}
-                  maxHeight={-1}
-                />
-            </div>
-          </div>
-
-          <div className="flex w-full flex-col lg:flex-row">
-            <div className="w-full lg:ml-2">
-                <Textarea readonly
-                  placeholder="Voice Recognition Results"
-                  value={oldsentence}
-                  onChange={setOldSentence}
                   maxHeight={-1}
                 />
             </div>
