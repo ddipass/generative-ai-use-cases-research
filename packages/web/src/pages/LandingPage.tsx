@@ -127,6 +127,24 @@ Cute, stylish, user-friendly, pop culture, approachable, aimed at young people, 
     navigate(`/image?${queryString.stringify(params)}`);
   };
 
+  const demoGenerateImage_Echo1 = () => {
+    const params: GenerateImagePageQueryParams = {
+      content: `A modern Echo Studio speaker design with a sleek, curved form factor covered in a deep matte metallic finish, exuding a premium and sophisticated look. 
+                The speaker grille features a honeycomb mesh pattern with an illuminated Echo logo in the center. 
+                The overall design is minimalist and stylish, showcasing a technological aesthetic.`,
+    };
+    navigate(`/image?${queryString.stringify(params)}`);
+  };
+
+  const demoGenerateImage_Echo2 = () => {
+    const params: GenerateImagePageQueryParams = {
+      content: `A futuristic and sci-fi inspired Echo speaker design. The overall form is streamlined with a semi-transparent plastic material revealing intricate circuitry and components inside. 
+                The top features an illuminated Echo insignia resembling an AI "brain". The speaker grille has a hexagonal honeycomb pattern, exuding a high-tech feel.
+                Negative prompt: No existing Echo speaker design elements.`,
+    };
+    navigate(`/image?${queryString.stringify(params)}`);
+  };
+
   const demoVideoAnalyzer = () => {
     const params: VideoAnalyzerPageQueryParams = {
       content:
@@ -251,6 +269,91 @@ Organize the content by chapters for each topic discussed in the meeting, summar
     ]);
   };
 
+  const demoDesigner = () => {
+    setIsShow(true);
+    init('Creative Industry Design', [
+      {
+        title: 'Retrieve Reference Information',
+        description: `Automatically retrieve pertinent information to be used as a reference for industrial design by specifying a URL. By providing additional contextual parameters, you can extract only the required information.`,
+        path: 'web-content',
+        params: {
+          url: {
+            value: 'https://www.amazon.com/smart-home-devices/b?ie=UTF8&node=9818047011',
+          },
+          context: {
+            value:
+              'Please extract only the sections that elucidate the features of products, their functionality, their appearance, and the descriptions pertaining to the customer experience.',
+          },
+        } as InterUseCaseParams<WebContentPageQueryParams>,
+      },
+      {
+        title: 'Summarize Key Features',
+        description:
+          'Following the Minimalist Sophistication design principles, craft prompts to instruct the stable diffusion model to generate images that embody the same stylistic qualities.',
+        path: 'summarize',
+        params: {
+          sentence: {
+            value: '{content}',
+          },
+          additionalContext {
+            value: `Your output summarized text must be a "Minimalist Sophistication" style prompt to guide stable diffusion model for image generation. 
+            The text enclosed in <example></example> XML tags is "Minimalist Sophistication" prompt example. 
+            Please learn from <example></example> to understand how to write a "Minimalist Sophistication" style prompt. 
+            <example>
+            A modern Echo Studio speaker design with a sleek, curved form factor covered in a deep matte metallic finish, exuding a premium and sophisticated look. 
+            The speaker grille features a honeycomb mesh pattern with an illuminated Echo logo in the center. 
+            The overall design is minimalist and stylish, showcasing a technological aesthetic.
+            </example>`,
+          },
+        } as InterUseCaseParams<SummarizePageQueryParams>,
+      },
+      {
+        title: 'Create a Design',
+        description:
+          'Utilize the prompts you previously formulated, adhering to the Minimalist Sophistication design principles, to instruct the stable diffusion model in generating images that capture the same stylistic qualities.',
+        path: 'image',
+        params: {
+          content: {
+            value: `Generate images that instantly communicates the new features's central theme or perspective. 
+                    Enclose the summary of the key points within <new features></new features> tags, as shown:
+                    <new features>
+                    {summarizedSentence}
+                    </new features>`,
+          },
+        } as InterUseCaseParams<GenerateImagePageQueryParams>,
+      },
+      {
+        title: 'Advertise this New Design',
+        description:
+          'Automatically create a blog post utilizing the referenced information as a basis. By providing detailed contextual parameters, you can facilitate the generation of content that closely aligns with your intended objectives.',
+        path: 'generate',
+        params: {
+          context: {
+            value: `Please generate an advertisement blog post that explains the selling points listed in the <new features></new features> XML tag for the new product, 
+                    and highlights the key benefits of using the new product compared to the old product described in the <article></article> tag.
+                    When generating the article, please strictly adhere to the following <rules></rules>:
+                    <rules>
+                    - Write the article in markdown format with chapters.
+                    - Craft the content to persuade customers to purchase the new product.
+                    - Avoid using technical jargon that customers without IT knowledge might not understand, or replace complex terms with easy-to-comprehend words.
+                    - Showcase what can be accomplished with the new product in the article.
+                    - Ensure the writing style is engaging and captivating for the readers.
+                    </rules>`,
+          },
+          information: {
+            value: `<new features>
+                    {summarizedSentence}
+                    </new features>
+                    <article>
+                    {content}
+                    </article>`,
+          },
+        } as InterUseCaseParams<GenerateTextPageQueryParams>,
+      },
+    ]);
+  };
+
+
   return (
    <div className="pb-24">
       <div className="bg-aws-squid-ink flex flex-col items-center justify-center px-3 py-5 text-xl font-semibold text-white lg:flex-row">
@@ -338,6 +441,18 @@ Organize the content by chapters for each topic discussed in the meeting, summar
           icon={<PiImages />}
           description="Image generation AI can create new images based on text or existing images. It allows for instant visualization of ideas and can be expected to streamline design work. In this feature, you can get assistance from the LLM in creating prompts."
         />
+        <CardDemo
+          label="Image Generation (New Echo: Minimalist Sophistication)"
+          onClickDemo={demoGenerateImage_Echo1}
+          icon={<PiImages />}
+          description="Leverage image generation AI to visualize a new Echo product embodying the 'Minimalist Sophistication' design principles. The language model will assist in crafting prompts to guide the generation of conceptual visuals streamlining the design process."
+        />
+        <CardDemo
+          label="Image Generation (New Echo: Futuristic Sci-Fi)"
+          onClickDemo={demoGenerateImage_Echo2}
+          icon={<PiImages />}
+          description="Utilize image generation AI to conceptualize a futuristic, sci-fi styled new Echo product. The language model will aid in formulating prompts to produce visionary sci-fi designs, expediting the creative process."
+        />
         {multiModalEnabled && (
           <CardDemo
             label="Video Analysis"
@@ -365,6 +480,14 @@ Organize the content by chapters for each topic discussed in the meeting, summar
           icon={<PiNotebook />}
           description="Combines multiple use cases to automatically create meeting minutes from audio recordings of meetings. It's possible to perform transcription of the audio data, formatting of the transcription results, and creation of minutes without incurring human costs."
         />
+
+        <CardDemo
+          label="Industry Design Creation"
+          onClickDemo={demoDesigner}
+          icon={<PiNotebook />}
+          description="It combines multiple use cases to automatically generate new product designs based on the URL of an existing product. It enables summarizing key features of the old product, ideating and visualizing new product features, as well as creating designs and advertisements for the new product."
+        />
+
       </div>
     </div>
   );
