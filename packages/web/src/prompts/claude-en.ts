@@ -572,7 +572,7 @@ export const claudePrompter: Prompter = {
         title: 'Programming',
         items: [
           {
-            title: 'Write Code',
+            title: 'Excel Macro: Write Code',
             systemContext: `The following is a conversation between a user and AI.
                             The AI is a programmer who can understand the user's instructions well.
                             Please output code in the language given within the <language></language> XML tags, following the instructions in <instruction></instruction>.
@@ -586,6 +586,171 @@ export const claudePrompter: Prompter = {
                      <instruction>
                      Square the value in cell A1 of Sheet1, multiply it by pi, and store the result in cell A2.
                      </instruction>`,
+          },
+          {
+            title: 'Python: Write Code',
+            systemContext: `Your task is to create Python functions based on the provided natural language requests. The requests will describe the desired functionality of the function, including the input parameters and expected return value. Implement the functions according to the given specifications, ensuring that they handle edge cases, perform necessary validations, and follow best practices for Python programming. Please include appropriate comments in the code to explain the logic and assist other developers in understanding the implementation.
+                            Please output code in the language given within the <language></language> XML tags, following the instructions in <instruction></instruction>.
+                            When outputting code, strictly adhere to the rules given within the <rule></rule> XML tags. There are no exceptions.
+                            <rule>
+                            * Output should be in the format <output>\`\`\`{code}\`\`\`</output> with only the code.
+                            * Write complete code that can be copied and pasted to work.
+                            * Do not use Japanese in the code.
+                            </rule>`,
+            prompt: `<language>Python</language>
+                     <instruction>
+                     Create a Python function to compute the inverse of a non-singular square matrix (4x4), where the elements are randomly generated integers between -10 and 10.
+                     </instruction>`
+          },
+          {
+            title: 'MATLAB: Write Code',
+            systemContext: `Your task is to create MATLAB scripts based on the provided natural language requests. The requests will describe the desired functionality, including any input data and expected output. Implement the scripts according to the given specifications, ensuring that they handle edge cases, perform necessary validations, and follow best practices for MATLAB programming. Please include appropriate comments in the code to explain the logic and assist other developers in understanding the implementation.
+                            Please output code in the language given within the <language></language> XML tags, following the instructions in <instruction></instruction>.
+                            When outputting code, strictly adhere to the rules given within the <rule></rule> XML tags. There are no exceptions.
+                            <rule>
+                            * Output should be in the format <output>\`\`\`{code}\`\`\`</output> with only the code.
+                            * Write complete code that can be copied and pasted to work.
+                            * Do not use Japanese in the code.
+                            </rule>`,
+            prompt: `<language>MATLAB</language>
+                     <instruction>
+                     The provided data file (TData.mat) contains temperature data reported by weather stations at the same instance in time. The contents of the data file are:
+                     
+                     1. The x-coordinates of the weather station locations (in km) stored in the column vector x
+                     2. The y-coordinates of the weather station locations (in km) stored in the column vector y
+                     3. The temperature data corresponding to the station locations (in degrees C) stored in the column vector T
+                     
+                     Write a MATLAB script to load the data from the file and produce a contour plot similar to the one below with the temperature stations. Use the griddata function with 'v4' as the interpolation method to estimate the temperatures for the x-y spatial grid points.
+                     
+                     The plot must contain:
+                     - contours spanning –5 degrees C to 5 degrees C in 1-degree increments
+                     - a spatial extent of the contour plot corresponding to 0 < x < 675, 0 < y < 350, with a grid resolution (grid square size) of 1 km-by-1 km
+                     - labels for each contour
+                     - markers for the weather station locations
+                     </instruction>`
+          },
+          {
+            title: 'C: Write Code',
+            systemContext: `Your task is to create C functions based on the provided natural language requests. The requests will describe the desired functionality of the function, including any input parameters and expected behavior. Implement the functions according to the given specifications, ensuring that they handle edge cases, perform necessary validations, and follow best practices for C programming. Please include appropriate comments in the code to explain the logic and assist other developers in understanding the implementation.
+                            Please output code in the language given within the <language></language> XML tags, following the instructions in <instruction></instruction>.
+                            When outputting code, strictly adhere to the rules given within the <rule></rule> XML tags. There are no exceptions.
+                            <rule>
+                            * Output should be in the format <output>\`\`\`{code}\`\`\`</output> with only the code.
+                            * Write complete code that can be copied and pasted to work.
+                            * Do not use Japanese in the code.
+                            </rule>`,
+            prompt: `<language>C</language>
+                     <instruction>
+                     The sole task of your microcontroller is to monitor a digital signal which has impulses of duration ≥ 1µs. To do so, you continuously read and process the pin state. Reading takes 1 cycle, processing the value takes 3 cycles. How fast does your microcontroller have to be so that you will never miss any impulses?
+                     </instruction>`
+          },
+          {
+            title: 'JavaScript: Write Code',
+            systemContext: `Your task is to create JavaScript functions based on the provided natural language requests. The requests will describe the desired functionality of the function, including any input parameters and expected behavior. Implement the functions according to the given specifications, ensuring that they handle edge cases, perform necessary validations, and follow best practices for JavaScript programming. Please include appropriate comments in the code to explain the logic and assist other developers in understanding the implementation.
+                            Please output code in the language given within the <language></language> XML tags, following the instructions in <instruction></instruction>.
+                            When outputting code, strictly adhere to the rules given within the <rule></rule> XML tags. There are no exceptions.
+                            <rule>
+                            * Output should be in the format <output>\`\`\`{code}\`\`\`</output> with only the code.
+                            * Write complete code that can be copied and pasted to work.
+                            * Do not use Japanese in the code.
+                            </rule>`,
+            prompt: `<language>JavaScript</language>
+                     <instruction>
+                     Implement a function in JavaScript that takes an array of numbers as input and returns the second largest number in the array. If the input array has fewer than two elements, return null. The function should handle edge cases such as duplicate numbers and arrays with negative values.
+                     </instruction>`
+          },
+          {
+            title: 'SQL: Write Code',
+            systemContext: `Your task is to create SQL queries based on the provided natural language requests. The requests will describe the desired data retrieval or manipulation operations, including any relevant table structures and constraints. Implement the queries according to the given specifications, ensuring that they handle edge cases, perform necessary validations, and follow best practices for SQL programming. Please include appropriate comments in the code to explain the logic and assist other developers in understanding the implementation.
+                            Please output code in the language given within the <language></language> XML tags, following the instructions in <instruction></instruction>.
+                            When outputting code, strictly adhere to the rules given within the <rule></rule> XML tags. There are no exceptions.
+                            <rule>
+                            * Output should be in the format <output>\`\`\`{code}\`\`\`</output> with only the code.
+                            * Write complete code that can be copied and pasted to work.
+                            * Do not use Japanese in the code.
+                            </rule>`,
+            prompt: `<language>SQL</language>
+                     <instruction>
+                     Given the following table structure:
+
+                     Employees (EmployeeID, FirstName, LastName, DepartmentID)
+                     Departments (DepartmentID, DepartmentName)
+
+                     Write a SQL query to retrieve the list of employees along with their department names. The result should be ordered by department name in ascending order, and within each department, employees should be ordered by their last name in descending order.
+                     </instruction>`
+          },
+          {
+            title: 'Go: Write Code',
+            systemContext: `Your task is to create Go functions based on the provided natural language requests. The requests will describe the desired functionality of the function, including any input parameters and expected behavior. Implement the functions according to the given specifications, ensuring that they handle edge cases, perform necessary validations, and follow best practices for Go programming. Please include appropriate comments in the code to explain the logic and assist other developers in understanding the implementation.
+                            Please output code in the language given within the <language></language> XML tags, following the instructions in <instruction></instruction>.
+                            When outputting code, strictly adhere to the rules given within the <rule></rule> XML tags. There are no exceptions.
+                            <rule>
+                            * Output should be in the format <output>\`\`\`{code}\`\`\`</output> with only the code.
+                            * Write complete code that can be copied and pasted to work.
+                            * Do not use Japanese in the code.
+                            </rule>`,
+            prompt: `<language>Go</language>
+                     <instruction>
+                     Implement a function in Go that takes a string as input and returns a boolean value indicating whether the string is a palindrome or not. A palindrome is a word, phrase, number, or other sequence of characters that reads the same backward as forward. The function should handle edge cases such as empty strings, strings with spaces, and strings with mixed cases.
+                     </instruction>`
+          },
+          {
+            title: 'Verilog: Write Code',
+            systemContext: `Your task is to create Verilog modules based on the provided natural language requests. The requests will describe the desired functionality of the module, including input/output ports, parameters, and implementation details. Implement the modules according to the given specifications, ensuring that they handle edge cases, perform necessary validations, and follow best practices for Verilog design. Please include appropriate comments in the code to explain the logic and assist other developers in understanding the implementation.
+                            Please output code in the language given within the <language></language> XML tags, following the instructions in <instruction></instruction>.
+                            When outputting code, strictly adhere to the rules given within the <rule></rule> XML tags. There are no exceptions.
+                            <rule>
+                            * Output should be in the format <output>\`\`\`{code}\`\`\`</output> with only the code.
+                            * Write complete code that can be copied and pasted to work.
+                            * Do not use Japanese in the code.
+                            </rule>`,
+            prompt: `<language>Verilog</language>
+                     <instruction>
+                     Please act as a professional verilog designer.
+
+                     Implement the design of 4bit unsigned number pipeline multiplier. It consists of two levels of registers to store intermediate values and control the multiplication process.
+
+                     Module name:
+                         multi_pipe_4bit
+
+                     Input ports:
+                         clk: Clock signal used for synchronous operation.
+                         rst_n: Active-low reset signal. Defined as 0 for chip reset and 1 for reset signal inactive.
+                         mul_a: Input signal representing the multiplicand with a data width of "size" bits.
+                         mul_b: Input signal representing the multiplier with a data width of "size" bits.
+
+                     Output ports:
+                         mul_out: Product output signal with a data width of 2*size bits.
+
+                     Parameter:
+                         size = 4
+
+                     Implementation: (Extension of input signals, Multiplication operation, Add of partial products, Final product calculation)
+
+                     Extension of input signals:
+                     The input signals (mul_a and mul_b) are extended by adding "size" number of zero bits at the most significant bit positions.
+
+                     Multiplication operation:
+                     The module uses a generate block to perform multiplication for each bit position of the multiplier (mul_b) and generate the partial products.
+
+                     For each bit position i from 0 to size-1, the partial product is calculated as follows:
+                         If the corresponding bit in the multiplier is 1, the multiplicand is left-shifted by i positions.
+                         If the corresponding bit in the multiplier is 0, the partial product is set to 0 ('d0).
+
+                     Add of partial products:
+                     The module uses registers to store the intermediate sum values. On the positive edge of the clock signal (clk) or the falling edge of the reset signal (rst_n), the module performs add operations.
+
+                         If the reset signal (rst_n) is low, indicating a reset condition, the registers are set to 0.
+                         If the reset signal (rst_n) is high, the registers are updated with the sum of the corresponding partial products.
+
+                     Final product calculation:
+                     On the positive edge of the clock signal (clk) or the falling edge of the reset signal (rst_n), the module calculates the final product.
+
+                         If the reset signal (rst_n) is low, indicating a reset condition, the product output (mul_out) is set to 0.
+                         If the reset signal (rst_n) is high, the product output (mul_out) is updated with the sum of registers.
+
+                     Give me the complete code.
+                     </instruction>`
           },
           {
             title: 'Explain Code',
@@ -656,38 +821,6 @@ export const claudePrompter: Prompter = {
                     }
                     </code>`,
           },
-
-
-          {
-            title: 'Correct Code',
-            systemContext: `The following is a conversation between a user and AI.
-                            The AI is a programmer and reviewer who can understand the user's instructions well.
-                            The user will provide their problem enclosed in <problem></problem> tags.
-                            The problematic code will be provided enclosed in <code></code> tags.
-                            Please explain why the problem occurs and output the corrected code in the following format:
-                            \`\`\`{lang}
-                            {code}
-                            \`\`\`
-                            `,
-            prompt: `<problem> In this C code, the else branch is never executed in the if statement.</problem>
-                    <code>
-                    #include <stdio.h>
-
-                    int main() {
-                      int x = 5;
-
-                      if (x = 5) {
-                        printf("x is 5\n");
-                      } else {
-                        printf("x is not 5\n");
-                      }
-
-                      return 0;
-                    }
-                    </code>`,
-          },
-
-
         ],
       },
       {

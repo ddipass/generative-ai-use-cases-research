@@ -138,9 +138,10 @@ Cute, stylish, user-friendly, pop culture, approachable, aimed at young people, 
 
   const demoGenerateImage_Echo2 = () => {
     const params: GenerateImagePageQueryParams = {
-      content: `A futuristic and sci-fi inspired Echo speaker design. The overall form is streamlined with a semi-transparent plastic material revealing intricate circuitry and components inside. 
-                The top features an illuminated Echo insignia resembling an AI "brain". The speaker grille has a hexagonal honeycomb pattern, exuding a high-tech feel.
-                Negative prompt: No existing Echo speaker design elements.`,
+      content: `An eco-friendly concept design for an Echo Dot speaker. The enclosure is made from recyclable wood material with a natural wood grain texture. 
+                The speaker grille is woven from wicker, creating a visual harmony with the casing. The top has a leaf-shaped Echo logo, giving off a warm and natural vibe. 
+                The design embodies environmental sustainability.
+                Negative prompt: No humans or animals.`,
     };
     navigate(`/image?${queryString.stringify(params)}`);
   };
@@ -278,7 +279,7 @@ Organize the content by chapters for each topic discussed in the meeting, summar
         path: 'web-content',
         params: {
           url: {
-            value: 'https://www.amazon.com/smart-home-devices/b?ie=UTF8&node=9818047011',
+            value: 'https://www.cnet.com/home/smart-home/amazon-echo-dot-5th-gen-review-the-best-echo-on-a-budget/',
           },
           context: {
             value:
@@ -448,10 +449,10 @@ Organize the content by chapters for each topic discussed in the meeting, summar
           description="Leverage image generation AI to visualize a new Echo product embodying the 'Minimalist Sophistication' design principles. The language model will assist in crafting prompts to guide the generation of conceptual visuals streamlining the design process."
         />
         <CardDemo
-          label="Image Generation (New Echo: Futuristic Sci-Fi)"
+          label="Image Generation (New Echo: Eco-friendly Naturalism)"
           onClickDemo={demoGenerateImage_Echo2}
           icon={<PiImages />}
-          description="Utilize image generation AI to conceptualize a futuristic, sci-fi styled new Echo product. The language model will aid in formulating prompts to produce visionary sci-fi designs, expediting the creative process."
+          description="Leverage image generation AI to visualize an eco-friendly and nature-inspired new Echo product design. The language model will assist in crafting prompts that capture organic forms, natural materials, and sustainable aesthetics, facilitating an efficient eco-conscious design process."
         />
         {multiModalEnabled && (
           <CardDemo
