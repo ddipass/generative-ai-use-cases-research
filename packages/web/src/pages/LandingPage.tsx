@@ -400,11 +400,7 @@ Organize the content by chapters for each topic discussed in the meeting, summar
         path: 'image',
         params: {
           content: {
-            value: `Generate images that instantly communicates the new features's central theme or perspective. 
-                    Enclose the summary of the key points within <new features></new features> tags, as shown:
-                    <new features>
-                    {summarizedSentence}
-                    </new features>`,
+            value: `{summarizedSentence}`,
           },
         } as InterUseCaseParams<GenerateImagePageQueryParams>,
       },
