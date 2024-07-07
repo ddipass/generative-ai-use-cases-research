@@ -93,6 +93,91 @@ The argument should be the term, and the processing should be written recursivel
     navigate(`/summarize?${queryString.stringify(params)}`);
   };
 
+  const demoSummarize_scipaper = () => {
+    const params: SummarizePageQueryParams = {
+      sentence:
+        'https://arxiv.org/html/2407.03311v1',
+      additionalContext: `Your task is to generate a concise abstract for a scientific paper based on the provided detailed content of the paper. The paper content will be presented in a structured format, such as sections and paragraphs.
+                          Please output the abstract in the format specified within the <output></output> XML tags, following the instructions in <instruction></instruction>.
+                          When outputting the abstract, strictly adhere to the rules given within the <rule></rule> XML tags. There are no exceptions.
+
+                          <rule>
+                          * Output should be in the Markdown format 
+
+                          <output>
+                          ### Abstract
+
+                          Brief summary...
+
+                          </output> 
+                          with a section for the Abstract.
+                          * Generate a well-structured and concise abstract that captures the key points and contributions of the paper.
+                          * Use proper Markdown syntax for formatting (e.g., headings, lists, bold).
+                          * Avoid copying verbatim from the source material; rephrase and synthesize the information.
+                          </rule>
+                          <instruction>
+                          Based on the provided content of the scientific paper titled "Value-Penalized Auxiliary Control from Examples for Learning without Rewards or Demonstrations", generate a concise abstract summarizing the key points, contributions, and findings of the paper.
+                          </instruction>
+
+                          <paper_content>
+                          [Paste the paper content here]
+                          </paper_content>`,
+    };
+    navigate(`/summarize?${queryString.stringify(params)}`);
+  };
+
+  const demoSummarize_chipset = () => {
+    const params: SummarizePageQueryParams = {
+      sentence:
+        'https://www.ti.com/document-viewer/TMS320F28050/datasheet#GUID-727AB525-C803-4D7C-B916-2A6A2FF9A676/TITLE-SPRS797SPRS5843023',
+      additionalContext: `Your task is to generate a concise product summary based on the provided detailed technical information about a chipset or device. The information will be presented in a structured format, such as a data sheet or technical specifications document.
+                          Please output the summary in the format specified within the <output></output> XML tags, following the instructions in <instruction></instruction>.
+                          When outputting the summary, strictly adhere to the rules given within the <rule></rule> XML tags. There are no exceptions.
+
+                          <rule>
+                          * Output should be in the Markdown format 
+
+                          <output>
+                          ## Product Overview
+
+                          Brief description...
+
+                          ## Key Features
+
+                          - Feature 1
+                          - Feature 2
+                          - ...
+
+                          ## Target Applications
+
+                          - Application 1
+                          - Application 2
+                          - ...
+
+                          </output> 
+
+                          with sections for Product Overview, Key Features, and Target Applications.
+                          * Generate a concise and well-structured summary that captures the essence of the provided technical information.
+                          * Use proper Markdown syntax for formatting (e.g., headings, lists).
+                          * Avoid copying verbatim from the source material; rephrase and synthesize the information.
+                          </rule>
+
+                          <instruction>
+                          Based on the provided technical information, generate a concise product summary highlighting the key features and target applications of this chipset.
+                          </instruction>
+
+                          <technical_information>
+
+                          [Paste the technical information from the data sheet here]
+
+                          </technical_information>`,
+    };
+    navigate(`/summarize?${queryString.stringify(params)}`);
+  };
+
+
+
+
   const demoEditorial = () => {
     const params: EditorialPageQueryParams = {
       sentence:
@@ -417,6 +502,18 @@ Organize the content by chapters for each topic discussed in the meeting, summar
           onClickDemo={demoSummarize}
           icon={<PiNote />}
           description="LLMs are good at summarizing large amounts of text. When summarizing, you can provide context such as 'in one line' or 'in words that even a child can understand'."
+        />
+        <CardDemo
+          label="Summarization (Understand Chipset Usage)"
+          onClickDemo={demoSummarize_chipset}
+          icon={<PiNote />}
+          description="LLMs can generate concise product summaries in easy-to-understand language by summarizing detailed technical specifications like datasheets, highlighting key features and target applications in a structured markdown output."
+        />
+        <CardDemo
+          label="Summarization (Generate Sci-Paper Abstract)"
+          onClickDemo={demoSummarize_scipaper}
+          icon={<PiNote />}
+          description="LLMs can generate concise paper abstracts that capture the key points and contributions in easy-to-understand language by summarizing the detailed content of scientific papers, including sections, equations, and figures."
         />
         <CardDemo
           label="Proofreading"

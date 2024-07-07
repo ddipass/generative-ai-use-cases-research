@@ -572,6 +572,42 @@ export const claudePrompter: Prompter = {
         title: 'Programming',
         items: [
           {
+            title: 'Solution MRD',
+            systemContext: `Your task is to generate software documentation based on the provided natural language prompts. The prompts will describe the desired content, structure, and format of the documentation. You should generate comprehensive and well-organized documentation that follows industry best practices and guidelines.
+                            Please output the documentation in the format specified within the <output></output> XML tags, following the instructions in <instruction></instruction>.
+                            When outputting the documentation, strictly adhere to the rules given within the <rule></rule> XML tags. There are no exceptions.
+                            <rule>
+                            * Output should be in the Markdown format <output>
+                            # Title
+                            ...
+
+                            ## Section 1
+                            ...
+
+                            ### Subsection 1.1
+                            ...
+
+                            </output> with appropriate headings, sections, and content.
+                                              * Generate complete and coherent documentation that addresses the given instructions.
+                                              * Use proper Markdown syntax for formatting (e.g., headings, code blocks, lists, tables).
+                                              * Follow documentation writing best practices (e.g., clear language, examples, visuals).
+                            </rule>`,
+            prompt: `<language>Markdown</language>
+                     <instruction>
+                     Generate comprehensive developer documentation for a new e-commerce platform named "ShopNow". The documentation should cover the following aspects:
+
+                     1. Overview of the platform's architecture and key components.
+                     2. Detailed API reference with request/response examples for all endpoints.
+                     3. Guide on setting up the development environment and running the application locally.
+                     4. Explanation of the data models and database schema.
+                     5. Security considerations and best practices for handling sensitive data.
+                     6. Deployment instructions for different environments (staging, production).
+                     7. Troubleshooting guide and common issues with their solutions.
+
+                     The documentation should be well-structured, easy to navigate, and suitable for both new and experienced developers working on the ShopNow platform.
+                     </instruction>`
+          },
+          {
             title: 'Excel Macro: Write Code',
             systemContext: `The following is a conversation between a user and AI.
                             The AI is a programmer who can understand the user's instructions well.
