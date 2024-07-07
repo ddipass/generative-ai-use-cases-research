@@ -295,7 +295,7 @@ Organize the content by chapters for each topic discussed in the meeting, summar
           sentence: {
             value: '{content}',
           },
-          additionalContext {
+          additionalContext: {
             value: `Your output summarized text must be a "Minimalist Sophistication" style prompt to guide stable diffusion model for image generation. 
             The text enclosed in <example></example> XML tags is "Minimalist Sophistication" prompt example. 
             Please learn from <example></example> to understand how to write a "Minimalist Sophistication" style prompt. 

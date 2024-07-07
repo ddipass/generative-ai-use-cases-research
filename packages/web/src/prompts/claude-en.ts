@@ -656,6 +656,38 @@ export const claudePrompter: Prompter = {
                     }
                     </code>`,
           },
+
+
+          {
+            title: 'Correct Code',
+            systemContext: `The following is a conversation between a user and AI.
+                            The AI is a programmer and reviewer who can understand the user's instructions well.
+                            The user will provide their problem enclosed in <problem></problem> tags.
+                            The problematic code will be provided enclosed in <code></code> tags.
+                            Please explain why the problem occurs and output the corrected code in the following format:
+                            \`\`\`{lang}
+                            {code}
+                            \`\`\`
+                            `,
+            prompt: `<problem> In this C code, the else branch is never executed in the if statement.</problem>
+                    <code>
+                    #include <stdio.h>
+
+                    int main() {
+                      int x = 5;
+
+                      if (x = 5) {
+                        printf("x is 5\n");
+                      } else {
+                        printf("x is not 5\n");
+                      }
+
+                      return 0;
+                    }
+                    </code>`,
+          },
+
+
         ],
       },
       {
